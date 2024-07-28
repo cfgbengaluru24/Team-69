@@ -2,6 +2,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { User } from "../models/user.models.js";
+// import bcrypt from "bcrpyt"
 
 export const registerUser = asyncHandler(async (req,res) => {
     // console.log(req.body)
@@ -42,7 +43,7 @@ export const registerUser = asyncHandler(async (req,res) => {
     if(exisitingUser) {
         throw new ApiError(404,"user already exists")
     }
-    const hashedCard = await bcrypt.hash(aadharNumber,13)
+    // const hashedCard = await bcrypt.hash(aadharNumber,10)
     
     const newUser = await User.create(
         {
@@ -55,7 +56,7 @@ export const registerUser = asyncHandler(async (req,res) => {
             age,
             houseOwned,
             phoneNumber,
-            aadharNumber : hashedCard,
+            aadharNumber,
             region,
             education
         }

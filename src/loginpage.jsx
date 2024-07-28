@@ -22,14 +22,13 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError('');
 
-    const response = await fetch('http://your-backend-url/login', {
+    const response = await fetch('http://localhost:8000/api/workers/login-worker', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password, role }),
+      body: JSON.stringify({ username, password }),
     });
 
     if (response.ok) {
@@ -43,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div id="login" className="flex justify-center items-center min-h-screen border-sky-100  rounded-xl">
+    <div className="flex justify-center items-center min-h-screen border-sky-100 ml-20 rounded-xl">
       <div className="rounded shadow-md w-full max-w-md">
         <h1 className="text-2xl text-white font-bold mb-4 text-center">LOGIN</h1>
         {error && <p className="text-red-500 mb-4">{error}</p>}

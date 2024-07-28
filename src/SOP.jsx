@@ -12,14 +12,14 @@ const SOPSection = () => {
   };
 
   return (
-    <div>
+    <div className="bg-slate-900">
         
         <Link to="/">
         <button className="mt-20 ml-40">
         <FaArrowLeft className="text-3xl"/>
         </button>
         </Link>
-    <div className="p-8 max-w-4xl mx-auto  rounded-lg shadow-lg">
+    <div className="p-8 max-w-4xl mx-auto bg-sky-100  rounded-lg shadow-lg">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-4xl font-extrabold text-gray-900">
           {t("sop.objective")}

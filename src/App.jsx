@@ -6,9 +6,15 @@ import ThankYou from './Thankyou';
 import Navbar from './Navbar';
 import SOPSection from './SOP';
 import ContactNavbar from './Navbar1';
-import Login from './loginpage'; // Import Login component
-import Chatbot from './chatbot'; // Import Chatbot component
-
+import CardGrid from './cardgrid';
+import DataGrid from './datagrid';
+import Sidebar from './sidebar';
+import Chatbot from './chatbot';
+import DashNavbar from './dashNavbar';
+import Login from './loginpage';
+import App1 from './App1';
+import AddUser from './AddUser';
+import RemoveUser from "./RemoveUser"
 const DashboardLayout = () => {
   const [showRegistrationUser, setShowRegistrationUser] = useState(true);
 
@@ -16,38 +22,55 @@ const DashboardLayout = () => {
     setShowRegistrationUser(!showRegistrationUser);
   };
 
-  return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <ContactNavbar />
-              <Navbar />
-              <p className="text-6xl font-thin text-white bg-gradient-to-r from-slate-800 via-slate-900 to-black animate-pulse flex items-center justify-center p-6">
-                Committed to making sustainable changes!
-              </p>
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-              <div className="bg-slate-800 flex flex-row justify-center items-start">
-                <div className="w-full max-w-lg">
-                  {showRegistrationUser ? (
-                    <Registrationuser toggleForm={toggleForm} />
-                  ) : (
-                    <Registrationflw toggleForm={toggleForm} />
-                  )}
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  return (
+    <div className="flex min-h-screen">
+      {/* <Sidebar /> */}
+      <div className="flex-1 flex flex-col">
+        {/* <DashNavbar /> */}
+        <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <ContactNavbar />
+                <Navbar />
+                <p className="text-6xl font-thin text-white bg-gradient-to-r from-slate-800 via-slate-900 to-black animate-pulse flex items-center justify-center p-6">
+                  Committed to making sustainable change!
+                </p>
+
+                <div className="bg-slate-800 flex flex-row justify-around items-center p-4">
+                  <div className="w-full max-w-lg">
+                    {showRegistrationUser ? (
+                      <Registrationuser toggleForm={toggleForm} />
+                    ) : (
+                      <Registrationflw toggleForm={toggleForm} />
+                    )}
+                  </div>
+                  <Login onLoginSuccess={handleLoginSuccess} />
+                
                 </div>
-                <div className="w-full max-w-lg ml-20">
-                  <Login />
-                </div>
-              </div>
-            </>
-          } />
+                {/* <CardGrid />
+                <DataGrid /> */}
+              </>
+            }
+          />
+            <Route path="/addUser" element={<AddUser />} />
           <Route path="/thankyou" element={<ThankYou />} />
           <Route path="/sop" element={<SOPSection />} />
+          <Route path='/dashboard' element={<App1 />}/>
+          <Route path='/removeUser' element = {<RemoveUser/>}/>
         </Routes>
-        <Chatbot /> {/* Add Chatbot component here */}
+        </Router>
       </div>
-    </Router>
+      <Chatbot />
+    </div>
   );
 };
 

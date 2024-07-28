@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Registrationuser = ({ toggleForm }) => {
+const AddUser = ({ toggleForm }) => {
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -18,7 +18,7 @@ const Registrationuser = ({ toggleForm }) => {
 
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
+//   localStorage.setItem("userId",)
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -35,7 +35,7 @@ const Registrationuser = ({ toggleForm }) => {
     formData.age = Number(formData.age)
     // Check if any field is empty
     try {
-      const response = await fetch("http://localhost:8000/api/users/register-user",{
+      const response = await fetch("http://localhost:8000/api/workers/fwl-register/66a55b01678b621161bee7f8",{
         method : 'POST',
         headers : {
           'Content-Type' : 'application/json'
@@ -46,7 +46,7 @@ const Registrationuser = ({ toggleForm }) => {
       const data = await response.json()
       console.log(data);
       if(response.ok) {
-        navigate("/thankyou")
+        navigate("/dashboard")
       }
     } catch (error) {
       setError(error.message)
@@ -207,19 +207,9 @@ const Registrationuser = ({ toggleForm }) => {
             Register
           </button>
         </form>
-        <div className="text-white ml-28 mt-4">
-          <p>
-            <button
-              onClick={toggleForm}
-              className="font-bold underline ml-8"
-            >
-              REGISTER AS FLW
-            </button>
-          </p>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Registrationuser;
+export default AddUser;
