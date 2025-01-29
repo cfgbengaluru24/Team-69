@@ -54,3 +54,4 @@ This project focuses on automating the process of identifying, matching, and rec
     
     -   **Twilio**: Service for sending SMS notifications to users and field workers.
 ![Screenshot 2024-07-28 103132](https://github.com/user-attachments/assets/4218ce59-5701-467f-b7df-3ffc15f01287)
+ <br /> <br /> The code ("Code") in this repository was created solely by the student teams during a coding competition hosted by JPMorgan Chase Bank, N.A. ("JPMC"). JPMC did not create or contribute to the development of the Code. This Code is provided AS IS and JPMC makes no warranty of any kind, express or implied, as to the Code, including but not limited to, merchantability, satisfactory quality, non-infringement, title or fitness for a particular purpose or use.
